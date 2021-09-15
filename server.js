@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const { ApolloServer } = require("apollo-server-express");
+const { typeDefs } = require("./graphQL/TypeDefs");
+const { resolvers } = require("./graphQL/Resolvers");
 
 const app = express();
 
@@ -19,7 +21,12 @@ db.on("error", (error) => console.log(error));
 db.once("open", () => console.log("MongoDB connected..."));
 
 // APIS and middleware
-server.applyMiddleware({ app });
+const apolloServerStart = async () => {
+  await server.start();
+  server.applyMiddleware({ app });
+};
+
+apolloServerStart();
 
 // routes
 
