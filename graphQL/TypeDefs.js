@@ -8,9 +8,17 @@ const typeDefs = gql`
     age: Int!
   }
 
+  type Book {
+    id: ID!
+    name: String!
+    genre: String!
+  }
+
   # Queries
   type Query {
     getAllAuthors: [Author!]!
+
+    getAllBooks: [Book!]!
   }
 
   # Mutations
