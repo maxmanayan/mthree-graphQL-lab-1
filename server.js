@@ -2,11 +2,14 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const { ApolloServer } = require("apollo-server-express");
 
 const app = express();
 
 // constants
 const PORT = 3001;
+
+// apollo/gql middleware
 
 // mongoose middleware
 mongoose.connect(process.env.MONGODB_URL);
