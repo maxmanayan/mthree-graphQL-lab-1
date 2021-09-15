@@ -10,6 +10,7 @@ const app = express();
 const PORT = 3001;
 
 // apollo/gql middleware
+const server = new ApolloServer({ typeDefs, resolvers });
 
 // mongoose middleware
 mongoose.connect(process.env.MONGODB_URL);
@@ -18,6 +19,7 @@ db.on("error", (error) => console.log(error));
 db.once("open", () => console.log("MongoDB connected..."));
 
 // APIS and middleware
+server.applyMiddleware({ app });
 
 // routes
 
