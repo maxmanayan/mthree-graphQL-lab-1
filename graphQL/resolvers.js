@@ -16,6 +16,19 @@ const resolvers = {
   },
 
   // Mutations
+  Mutation: {
+    async createAuthor(parent, args) {
+      const newAuthor = new Author({ ...args });
+      let res = await newAuthor.save();
+      return res;
+    },
+
+    async createBook(parent, args) {
+      const newBook = new Book({ ...args });
+      let res = await newBook.save();
+      return res;
+    },
+  },
 };
 
 module.exports = { resolvers };
